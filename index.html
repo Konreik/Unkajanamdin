@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1290,17 +1289,11 @@
             &nbsp;
             &nbsp;
             
-
-                <h class="f"> Chakku pe laga hai khoon hatana toh padega, bhai ka birthday hai mana toh padega!!</h> 
+            <h class="f"> Chakku pe laga hai khoon hatana toh padega, bhai ka birthday hai mana toh padega!!</h> 
                   
-                  
-            
-            
-            
-        <footer>
-            Niche scroll karo!
-        </footer>
-           
+            <footer>
+                Niche scroll karo!
+            </footer>
         </header>
 
         <div class="container">
@@ -1393,11 +1386,7 @@
                 <div class="message-section">
                     <h2 class="message-title">Dear Annesha,</h2>
                     <div class="message-content">
-                        <p>I don’t know how to express it or make you feel it, but you’ve truly made someone’s life so much better. Sometimes I wonder what the meaning of life even is, but then I remember you and I realize, yes, I do have one wish: to meet you. You are the most beautiful person in the world to me. Maybe I can’t put it all into words, but honestly, you’re a wonderful person, the best kind there is. I love everything about you, and talking to you always makes me happy. Thank you for making my life better, I love you.
-              
-
-</p>
-
+                        <p>I don’t know how to express it or make you feel it, but you’ve truly made someone’s life so much better. Sometimes I wonder what the meaning of life even is, but then I remember you and I realize, yes, I do have one wish: to meet you. You are the most beautiful person in the world to me. Maybe I can’t put it all into words, but honestly, you’re a wonderful person, the best kind there is. I love everything about you, and talking to you always makes me happy. Thank you for making my life better, I love you.</p>
                         <p><strong>Happy Birthday, my Aloo Seedho Bhatt ki mummy.</strong></p>
                     </div>
                     <div class="signature">With all my love</div>
@@ -1464,103 +1453,6 @@
     </div>
 
     <script>
-        // Initialize audio with JavaScript
-        let audio;
-        let pigeonAudio;
-        let isAudioPlaying = false;
-        const audioSource = 'https://www.kozco.com/tech/piano2-CoolEdit.mp3'; // Soft piano track
-        const fallbackAudioSource = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'; // Fallback track
-        const pigeonAudioSource = 'https://freesound.org/data/previews/66/66100_576742-lq.mp3'; // Pigeon cooing sound
-        const pigeonFallbackAudioSource = 'https://freesound.org/data/previews/184/184578_127920-lq.mp3'; // Fallback pigeon sound
-
-        function initializeAudio() {
-            // Initialize background music
-            audio = new Audio(audioSource);
-            audio.loop = true;
-            audio.volume = 0.3; // Soft volume for background music
-
-            audio.onerror = () => {
-                console.error('Primary background audio failed to load. Trying fallback...');
-                audio.src = fallbackAudioSource;
-                audio.load();
-            };
-
-            audio.load();
-            console.log('Background audio initialized:', audioSource);
-
-            // Initialize pigeon sound
-            pigeonAudio = new Audio(pigeonAudioSource);
-            pigeonAudio.volume = 0.5; // Slightly louder than background for emphasis
-            pigeonAudio.loop = false; // Play once
-
-            pigeonAudio.onerror = () => {
-                console.error('Primary pigeon audio failed to load. Trying fallback...');
-                pigeonAudio.src = pigeonFallbackAudioSource;
-                pigeonAudio.load();
-            };
-
-            pigeonAudio.load();
-            console.log('Pigeon audio initialized:', pigeonAudioSource);
-        }
-
-        function toggleAudio() {
-            if (!audio) {
-                console.error('Background audio not initialized');
-                return;
-            }
-            if (!isAudioPlaying) {
-                audio.play().then(() => {
-                    isAudioPlaying = true;
-                    console.log('Background audio started');
-                }).catch(e => {
-                    console.error('Background audio play error:', e);
-                    if (audio.src !== fallbackAudioSource) {
-                        audio.src = fallbackAudioSource;
-                        audio.load();
-                        audio.play().then(() => {
-                            isAudioPlaying = true;
-                            console.log('Fallback background audio started');
-                        }).catch(e => console.error('Fallback background audio play error:', e));
-                    }
-                });
-            }
-        }
-
-        function playPigeonAudio() {
-            if (!pigeonAudio) {
-                console.error('Pigeon audio not initialized');
-                return;
-            }
-            pigeonAudio.currentTime = 0; // Reset to start
-            pigeonAudio.play().then(() => {
-                console.log('Pigeon audio played');
-            }).catch(e => {
-                console.error('Pigeon audio play error:', e);
-                if (pigeonAudio.src !== pigeonFallbackAudioSource) {
-                    pigeonAudio.src = pigeonFallbackAudioSource;
-                    pigeonAudio.load();
-                    pigeonAudio.play().then(() => {
-                        console.log('Fallback pigeon audio played');
-                    }).catch(e => console.error('Fallback pigeon audio play error:', e));
-                }
-            });
-        }
-
-        function stopAudio() {
-            if (!audio) return;
-            audio.pause();
-            audio.currentTime = 0;
-            isAudioPlaying = false;
-            console.log('Background audio stopped');
-        }
-
-        function stopPigeonAudio() {
-            if (!pigeonAudio) return;
-            pigeonAudio.pause();
-            pigeonAudio.currentTime = 0;
-            console.log('Pigeon audio stopped');
-        }
-
         // Initialize canvas
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas ? canvas.getContext('2d') : null;
@@ -1803,9 +1695,6 @@
 
         updateOrbPositions();
 
-        // Initialize audio on page load
-        initializeAudio();
-
         // Surprise Button and Sparkle Effect
         const surpriseBtn = document.getElementById('surpriseBtn');
         const photoMemory = document.getElementById('photoMemory');
@@ -1834,38 +1723,32 @@
 
         if (surpriseBtn) {
             surpriseBtn.addEventListener('click', function(e) {
-                toggleAudio();
                 if (!surpriseClicked) {
                     surpriseClicked = true;
                     const rect = surpriseBtn.getBoundingClientRect();
                     createSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
                     setTimeout(() => {
                         photoMemory.classList.add('show');
-                        playPigeonAudio();
                     }, 1000);
                     surpriseBtn.textContent = 'Surprise!';
                     surpriseBtn.style.background = 'linear-gradient(135deg, #c084fc, #ff6b9d)';
                 } else {
                     photoMemory.classList.add('show');
-                    playPigeonAudio();
                 }
             });
             surpriseBtn.addEventListener('touchstart', function(e) {
                 e.preventDefault();
-                toggleAudio();
                 if (!surpriseClicked) {
                     surpriseClicked = true;
                     const rect = surpriseBtn.getBoundingClientRect();
                     createSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
                     setTimeout(() => {
                         photoMemory.classList.add('show');
-                        playPigeonAudio();
                     }, 1000);
                     surpriseBtn.textContent = 'Surprise!';
                     surpriseBtn.style.background = 'linear-gradient(135deg, #c084fc, #ff6b9d)';
                 } else {
                     photoMemory.classList.add('show');
-                    playPigeonAudio();
                 }
             });
         } else {
@@ -1875,8 +1758,6 @@
         function closePhotoMemory() {
             if (photoMemory) {
                 photoMemory.classList.remove('show');
-                stopPigeonAudio();
-                stopAudio();
             }
         }
 
